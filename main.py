@@ -41,11 +41,14 @@ xpos = {
     'marathon': [1.5, 4.5, 8.5, 12.5, 17.548, 22.55, 26.5, 31, 34, 38.6],
 }
 
+st.set_page_config(layout="wide")
 
 """
 # Nantes - Marathon/Semi-Marathon 2022
 """
-st.markdown('17/04/2022 - Par [Laurent Ribiere](https://twitter.com/LRibiere)')
+tw_url = 'https://twitter.com/LRibiere'
+git_url = 'https://github.com/lribiere/nantes-marathon-2022'
+st.markdown(f'17/04/2022 - Par [Laurent Ribiere]({tw_url}) - [Source]({git_url})')
 
 course = st.sidebar.selectbox('Quelle course ?', courses.keys(), index=0)
 if course != '--':
@@ -63,7 +66,7 @@ else:
 
 
 chrono_df = pd.Series(chronos).reset_index()
-chrono_df.columns=['km', 'chrono']
+chrono_df.columns = ['km', 'chrono']
 st.table(chrono_df)
 
 if check_chrono_df(chrono_df):
